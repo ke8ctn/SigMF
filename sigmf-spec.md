@@ -46,7 +46,9 @@ Copyright of contributions to SigMF are retained by their original authors. All 
         - [Annotation Segment Objects](#annotation-segment-objects)
     - [Collection Format](#collection-format)
   - [Licensing](#licensing)
-  - [SigMF Compliance by Applications](#sigmf-compliance-by-applications)
+  - [SigMF Compliance](#sigmf-compliance)
+  - [SigMF Compliant Datasets](#sigmf-compliant-datasets)
+  - [SigMF Compliant Applications](#sigmf-compliant-applications)
   - [Citing SigMF](#citing-sigmf)
   - [Acknowledgements](#acknowledgements)
 
@@ -557,21 +559,47 @@ deciding which open license fits your needs best. Cornell University has also
 created [a guide](https://data.research.cornell.edu/content/intellectual-property#data-licensing) 
 to help you make these choices.
 
-## SigMF Compliance by Applications
+## SigMF Compliance
 
-In order to be `SigMF Compliant`, an application must meet the following
+The term 'SigMF Compliant' is used throughout this document; there are two
+aspects to SigMF compliance. In order for an application or dataset to say it is
+'SigMF Compliant', specific conditions MUST be met, outlined in the following
+sections. Provided the below criteria are met, an application or dataset may
+indicate that it is 'SigMF Compliant'.
+
+### SigMF Compliant Datasets
+
+In order to be 'SigMF Compliant', an dataset must meet the following
 requirements:
 
 1. Adheres to and supports the file rules, dataset formats, `objects`,
    `namespaces`, and `names` specified by this document.
-2. Must be able to ignore any `object` or `namespace` not specified by this
+1. MUST contain all REQUIRED fields with the correct datatype listed the `core`
+   namespace, and any namespace listed in the `extensions` array.
+1. MUST NOT contain fields that are not outlined in the `core` or a listed
+   `extensions` namespace.
+
+Non Compliant Datasets MAY work with SigMF Compliant applications, but this is
+not guaranteed.
+
+### SigMF Compliant Applications
+
+In order to be 'SigMF Compliant', an application must meet the following
+requirements:
+
+1. Adheres to and supports the file rules, dataset formats, `objects`,
+   `namespaces`, and `names` specified by this document.
+1. Must be able to ignore any `object` or `namespace` not specified by this
    document and still function normally.
-3. Capture Segments referring to non-existent samples should be ignored.
-4. Must treat consecutive Capture Segments whose metadata is equivalent for
+1. Capture Segments referring to non-existent samples should be ignored.
+1. Must treat consecutive Capture Segments whose metadata is equivalent for
    purposes of that application (i.e., it may be different in values ignored by
    the application such as optional values or unknown extensions) as it would
    a single segment.
-5. Supports all fields in the `core` namespace.
+1. Supports parsing all REQUIRED fields in the `core` namespace, and defines
+   which `optional` fields are used by the application.
+1. Defines which extensions are supported, parses all REQUIRED fields in
+   listed extension namespaces, and defines which `optional` fields are used.
 
 ## Citing SigMF
 
